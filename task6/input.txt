@@ -1,0 +1,10 @@
+1 Anton Andrianov M8O-212BV-24 4 5 3 4 5
+2 Darya Istomina M5O-113BV-25 2 2 2 2 2
+3 Anton Mishin M8O-207BV-24 5 4 3 5 4
+4 Ivan Andrian M3O-111BV-23 1 1 1 1 1
+5 Svetlana Sidorova M8O-212BV-24 5 5 5 5 5
+6 Alexei Volkov M5O-113BV-25 3 4 5 3 4
+7 Ekaterina Nikolaeva M8O-207BV-24 4 4 4 4 4
+8 Mikhail Smirnov M3O-111BV-23 2 3 4 3 2
+9 Anna Kozlova M8O-212BV-24 5 3 5 3 5
+10 Oleg Bazhenov M5O-113BV-25 4 4 3 4 4
