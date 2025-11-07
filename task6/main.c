@@ -1,8 +1,8 @@
 #include "header.h"
 
 int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        fprintf(stderr, "Использование: %s <входной_файл> [трассировочный_файл]\n", argv[0]);
+    if (argc < 2 || argc > 3) {
+        printf("Использование: %s <входной_файл> [трассировочный_файл]\n", argv[0]);
         return 1;
     }
 
@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 
     FILE *input = fopen(input_filename, "r");
     if (!input) {
-        perror("Ошибка открытия входного файла");
+        printf("Ошибка открытия входного файла\n");
         return FILE_ERROR;
     }
 
@@ -37,9 +37,9 @@ int main(int argc, char *argv[]) {
 
     if (result != SUCCESS) {
         if (result == ALLOCATION_ERROR) {
-            fprintf(stderr, "Ошибка выделения памяти при загрузке данных\n");
+            printf("Ошибка выделения памяти при загрузке данных\n");
         } else if (result == FILE_ERROR) {
-            fprintf(stderr, "Ошибка файла при загрузке данных\n");
+            printf("Ошибка файла при загрузке данных\n");
         }
         return (result == ALLOCATION_ERROR) ? 2 : 1;
     }
@@ -175,7 +175,7 @@ int main(int argc, char *argv[]) {
                     if (scanf("%u", &input_id) == 1) {
                         FILE *trace = fopen(trace_filename, "w");
                         if (!trace) {
-                            perror("Ошибка открытия трассировочного файла для записи");
+                            printf("Ошибка открытия трассировочного файла для записи");
                         } else {
                             result = write_student_to_trace_file(trace, students, student_count, input_id);
                             fclose(trace);

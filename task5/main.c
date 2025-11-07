@@ -26,13 +26,22 @@ int main(int argc, char* argv[]){
     free(real_in);
     free(real_out);
 
-    FILE *input_file = fopen(file_in, "r");
-    FILE *output_file = fopen(file_out, "w");
-    if(!input_file || !output_file){
-        fclose(input_file);
-        fclose(output_file);
-        return FILE_ERROR;
-    }
+    status_code some_code = parse_file(file_in, file_out);
 
-    status_code some_code = some_function(input_file, output_file);
+    switch (some_code){
+    case ALLOCATION_ERROR:
+        printf("Allocation_Error\n");
+    case FILE_ERROR:
+        printf("File_Error\n");
+        break;
+    case ARG_ERROR:
+        printf("Arg_error\n");
+        break;
+    case VALID:
+        printf("Success\n");
+        break;
+    default:
+        printf("Undefine_error\n");
+        break;
+    }
 }

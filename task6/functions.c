@@ -100,7 +100,7 @@ status_code reading(FILE *input, Student **students, size_t *count){
 }
 
 
-void free_students(Student *students, size_t count){
+void free_students(Student *students, size_t count) {
     if (students) {
         for (size_t i = 0; i < count; i++) {
             free(students[i].marks);
@@ -120,6 +120,7 @@ int find_index_by_id(Student *students, size_t count, unsigned int id) {
 }
 
 status_code find_students_by_lastname(Student *students, size_t count, const char *lastname, Student **results, size_t *results_count) {
+
     if (!students || !lastname || !results || !results_count) return VALIDATION_ERROR;
     *results = malloc(count * sizeof(Student));
     if (!(*results)) return ALLOCATION_ERROR;
@@ -170,7 +171,7 @@ status_code find_students_by_group(Student *students, size_t count, const char *
 
     size_t found_count = 0;
     for (size_t i = 0; i < count; i++) {
-        if (strcmp(students[i].group, group) == 0) {
+        if (strcmp(students[i].group, group) == 0){
             if (found_count >= count) {
                 free(*results);
                 *results = NULL;
@@ -213,7 +214,7 @@ int compare_by_group(const void *a, const void *b) {
 
 double get_average_grade(const Student *s) {
     unsigned long long sum = 0;
-    for (int i = 0; i < NUM_EXAMS; i++) {
+    for (int i = 0; i < NUM_EXAMS; i++){
         sum += s->marks[i];
     }
     return (double)sum / NUM_EXAMS;
@@ -229,12 +230,11 @@ status_code write_student_to_trace_file(FILE *tf, Student *students, size_t coun
     }
 
     double avg = get_average_grade(&students[index]);
-    fprintf(tf, "ФИО: %s %s, Группа: %s, Средняя оценка: %.2f\n",
-            students[index].name, students[index].lastname, students[index].group, avg);
+    fprintf(tf, "ФИО: %s %s, Группа: %s, Средняя оценка: %.2f\n", students[index].name, students[index].lastname, students[index].group, avg);
     return SUCCESS;
 }
 
-status_code write_above_average_to_trace_file(FILE *tf, Student *students, size_t count) {
+status_code write_above_average_to_trace_file(FILE *tf, Student *students, size_t count){
     if (!tf || !students || count == 0) return FILE_ERROR;
 
     double total_avg = 0.0;
@@ -294,9 +294,9 @@ void print_student_grades(const Student *s) {
 }
 
 void print_students_list(Student *students, size_t count) {
-    printf("\n--- Список всех студентов ---\n");
+    printf("\nСписок всех студентов\n");
     for (size_t i = 0; i < count; i++) {
         print_student(&students[i]);
     }
-    printf("--- Конец списка ---\n");
+    printf("Конец списка\n");
 }
